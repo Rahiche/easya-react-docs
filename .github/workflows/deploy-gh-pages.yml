@@ -1,8 +1,15 @@
 name: Deploy to GitHub Pages
+
+permissions: # Add this section
+  contents: write #  This permission is enough for most deploy scenarios
+  pages: write    # To deploy to GitHub Pages
+  id-token: write  # To verify the deployment originates from your repository
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
