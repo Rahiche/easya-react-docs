@@ -1,0 +1,37 @@
+# TrustLineForm
+
+A React component for creating XRPL trust lines. This form allows users to specify currency, issuer, and limit details for establishing trust lines on the blockchain.
+
+## Features
+
+- Input fields for currency code, issuer address, and trust line limit
+- Real-time validation of inputs
+- Integrated with blockchain SDK
+- Connection status awareness
+
+## States
+
+The component can be in these states:
+
+- **Not Supported**: Shows when SDK is not available
+- **Disconnected**: Form inputs are disabled
+- **Connected**: Form is active and ready for input
+- **Error**: Displays validation or transaction errors
+- **Transaction Processing**: Button disabled during transaction
+
+## Usage
+
+```tsx
+import { TrustLineForm } from './TrustLineForm';
+
+// Basic usage
+<TrustLineForm />
+```
+
+## Input Fields
+
+| Field | Description | Validation |
+|-------|-------------|------------|
+| Currency Code | The currency code (e.g., USD) | Required, auto-uppercase |
+| Issuer Address | Blockchain address of the issuer | Required |
+| Trust Line Limit | Maximum amount for the trust line | Required, non-negative |
