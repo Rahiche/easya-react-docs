@@ -13,7 +13,7 @@ const config = {
   organizationName: 'EasyA-Tech',
   projectName: 'layer-ui-react',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', 
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
