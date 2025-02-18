@@ -1,0 +1,41 @@
+
+# AddressDisplay
+
+A React component that displays a blockchain address with copy and refresh functionality.
+
+## Features
+
+- Shows the current blockchain address in truncated format (e.g., "0x1234...5678")
+- Auto-refreshes the address periodically
+- Copy address to clipboard button
+- Manual refresh button
+
+## Props
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | '' | Additional CSS classes |
+| refreshInterval | number | 10000 | Auto-refresh interval in milliseconds |
+
+## States
+
+The component can be in one of these states:
+
+- **Disconnected**: Shows "Not connected"
+- **Connecting**: Shows "Connecting..."
+- **Connected**: Shows the truncated address
+- **Loading**: Shows "Loading..." while fetching address
+- **Error**: Shows error message if something fails
+- **Copy Success**: Shows "Copied!" briefly after successful copy
+
+## Usage
+
+```tsx
+import { AddressDisplay } from './AddressDisplay';
+
+// Basic usage
+<AddressDisplay />
+
+// Custom refresh interval (30 seconds)
+<AddressDisplay refreshInterval={30000} />
+```
