@@ -7,11 +7,12 @@ const config = {
   tagline: 'Build Web3 Applications with Ease',
   favicon: 'img/favicon.ico',
 
-  url: 'https://docs.easya.io',
-  baseUrl: '/',
-
-  organizationName: 'EasyA-Tech',
-  projectName: 'layer-ui-react',
+  url: 'https://rahiche.github.io',
+  baseUrl: '/easya-react-docs/',
+  organizationName: 'Rahiche', // Your GitHub username
+  projectName: 'easya-react-docs', // Your repository name
+  deploymentBranch: 'gh-pages', // The branch to deploy to
+  trailingSlash: false,
 
   onBrokenLinks: 'warn', 
   onBrokenMarkdownLinks: 'warn',
