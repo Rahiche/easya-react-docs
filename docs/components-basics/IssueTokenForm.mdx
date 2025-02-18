@@ -1,32 +1,47 @@
-# TransactionForm
+# IssueTokenForm
 
-A React component for handling blockchain transactions with support for multiple currencies and real-time balance checking.
+A React component for creating and issuing tokens on the blockchain with customizable fields and validation.
 
 ## Features
 
-- Asset selection from available balances
-- Real-time balance display
-- Amount input with balance validation
-- Recipient address input
-- Transaction status and error handling
-- Automatic asset list refresh when connection status changes
-
-## States
-
-The component manages several internal states:
-
-- **Disconnected**: Form inputs are disabled
-- **Connected**: Form is active and ready for transaction
-- **Error**: Shows validation errors (e.g., insufficient balance)
-- **Transaction Status**: Displays current transaction status
-- **Asset Selection**: Shows available assets and their balances
+- Token creation with required and optional parameters
+- Cold wallet generation or manual input
+- Form validation
+- Transaction status feedback
 
 ## Usage
 
 ```tsx
-import { TransactionForm } from './TransactionForm';
+import { IssueTokenForm } from './IssueTokenForm';
 
-// Basic usage within your app
-<TransactionForm />
+// Basic usage
+<IssueTokenForm />
 ```
+
+## Required Fields
+
+- **Currency Code**: Three or four letter code for the token (e.g., "USD", "EUR")
+- **Amount**: The quantity of tokens to issue (must be greater than 0)
+- **Cold Wallet Details**: If not generating a new wallet, requires both address and secret
+
+
+## States
+
+The form can be in these states:
+
+- **Disconnected**: Wallet connection required to submit
+- **Connected**: Ready to accept input
+- **Invalid**: One or more required fields need attention
+- **Processing**: Transaction is being processed
+- **Complete**: Transaction successful
+
+
+
+## Optional Fields
+
+- **Transfer Rate**: Fee percentage for transfers (0-1%)
+- **Tick Size**: Increment size for orders (0-15)
+- **Domain**: Associated domain name
+- **Require Destination Tags**: Toggle for mandatory destination tags
+- **Disallow XRP**: Toggle to prevent XRP payments
 
