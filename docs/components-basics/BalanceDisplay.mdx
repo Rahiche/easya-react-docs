@@ -1,0 +1,58 @@
+# BalanceDisplay
+
+A React component that displays a blockchain balance with refresh functionality and automatic updates.
+
+## Features
+
+- Displays current blockchain balance with currency symbol
+- Auto-refreshes balance at configurable intervals
+- Manual refresh button
+- Handles multiple connection and loading states
+- Accessible error messaging
+
+## Props
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | '' | Additional CSS classes to apply to the root element |
+| refreshInterval | number \| null | null | Auto-refresh interval in milliseconds. Set to null to disable auto-refresh |
+
+## States
+
+The component manages several internal states:
+
+- **Disconnected**: Shows "Not connected" when blockchain connection is unavailable
+- **Connected**: Displays the current balance with currency symbol
+- **Connecting**: Shows "Connecting..." while establishing connection
+- **Loading**: Shows "Loading..." while fetching balance
+- **Error**: Displays error message if balance fetch fails
+
+
+## Usage
+
+```tsx
+import { BalanceDisplay } from './BalanceDisplay';
+
+// Basic usage with no auto-refresh
+<BalanceDisplay />
+
+// With auto-refresh every 30 seconds
+<BalanceDisplay refreshInterval={30000} />
+
+// With custom CSS class
+<BalanceDisplay className="custom-balance-display" />
+```
+
+## CSS Classes
+
+The component uses the following CSS classes for styling:
+
+- `easya-balance-display`: Root container
+- `easya-balance-display__content`: Content wrapper
+- `easya-balance-display__title`: Balance title
+- `easya-balance-display__info`: Balance information container
+- `easya-balance-display__value`: Balance value display
+  - `--disconnected`: Modifier for disconnected state
+  - `--loading`: Modifier for loading state
+- `easya-balance-display__refresh`: Refresh button
+- `easya-balance-display__error`: Error message container
