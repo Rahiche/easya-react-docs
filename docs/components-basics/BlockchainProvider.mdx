@@ -1,12 +1,17 @@
----
-title: BlockchainProvider
-description: A context provider component that shares blockchain configuration and state management across your application.
----
+# BlockchainProvider
 
-# Overview
-The BlockchainProvider must be placed at the root of your component tree to ensure all child components have access to the same blockchain configuration and state.
+A React context provider that manages blockchain connectivity, transactions, and state management for blockchain operations.
 
-# Usage
+## Features
+
+- Manages blockchain connection state
+- Handles transactions and NFT operations
+- Manages trust lines and token issuance
+- Provides form value management for blockchain operations
+- Event subscription system for blockchain events
+
+## Quick Start
+
 ```typescript
 import { BlockchainProvider, ConnectButton } from '@easya/layer-ui-react';
 
@@ -25,9 +30,90 @@ function App() {
 }
 ```
 
+## Configuration
 
-1. network: it can be testnet or mainnet
-2. blockchain: it can be only xrpl at the momonet , more will come soon
-3. wallet: it can be one of the supported wallets: xrpl, gem
+The `BlockchainProvider` requires a configuration object with the following properties:
 
+| Property | Type | Options | Description |
+|----------|------|---------|-------------|
+| network | string | 'testnet' \| 'mainnet' | Network environment |
+| blockchain | string | 'xrpl' | Blockchain platform (more options coming soon) |
+| wallet | string | 'crossmark' \| 'gem' | Supported wallet provider |
 
+## Usage
+
+Wrap your application with the provider:
+
+```tsx
+import { BlockchainProvider } from './BlockchainContext';
+
+const config = {
+  // Your Easya SDK configuration
+};
+
+function App() {
+  return (
+    <BlockchainProvider config={config}>
+      {/* Your app components */}
+    </BlockchainProvider>
+  );
+}
+```
+
+Access blockchain functionality in your components:
+
+```tsx
+import { useBlockchain } from './BlockchainContext';
+
+function MyComponent() {
+  const { 
+    connectToBlockchain, 
+    sendTransaction, 
+    getBalance 
+  } = useBlockchain();
+
+  // Use the functions as needed
+}
+```
+
+## Connection States
+
+The provider tracks these connection states:
+
+- `DISCONNECTED`: Initial state or after disconnection
+- `CONNECTING`: During connection attempt
+- `CONNECTED`: Successfully connected
+- `DISCONNECTING`: During disconnection process
+- `FAILED`: Connection or operation failed
+
+## Available Methods
+
+- `connectToBlockchain()`: Initiates blockchain connection
+- `disconnectFromBlockchain()`: Safely disconnects from blockchain
+- `sendTransaction()`: Executes blockchain transactions
+- `mintNFT()`: Creates new NFTs
+- `getBalance()`: Retrieves wallet balance
+- `getCurrencySymbol()`: Gets current currency symbol
+- `getAddress()`: Retrieves wallet address
+- `getNFTs()`: Lists owned NFTs
+- `transferNFT()`: Transfers NFT ownership
+- `createTrustLine()`: Establishes trust lines
+- `issueToken()`: Creates new tokens
+- `subscribeToEvents()`: Subscribes to blockchain events
+- `unsubscribeFromEvents()`: Removes event subscriptions
+
+## Event System
+
+Subscribe to blockchain events:
+
+```tsx
+const { subscribeToEvents, unsubscribeFromEvents } = useBlockchain();
+
+// Subscribe to events
+subscribeToEvents('transactionComplete', (data) => {
+  console.log('Transaction completed:', data);
+});
+
+// Cleanup
+unsubscribeFromEvents('transactionComplete');
+```
