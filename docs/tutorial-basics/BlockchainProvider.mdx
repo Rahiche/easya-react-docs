@@ -1,0 +1,33 @@
+---
+title: BlockchainProvider
+description: A context provider component that shares blockchain configuration and state management across your application.
+---
+
+# Overview
+The BlockchainProvider must be placed at the root of your component tree to ensure all child components have access to the same blockchain configuration and state.
+
+# Usage
+```typescript
+import { BlockchainProvider, ConnectButton } from '@easya/layer-ui-react';
+
+const config = {
+  network: 'testnet',
+  blockchain: 'xrpl',
+  wallet: 'crossmark'
+};
+
+function App() {
+  return (
+    <BlockchainProvider config={config}>
+      <ConnectButton />
+    </BlockchainProvider>
+  );
+}
+```
+
+
+1. network: it can be testnet or mainnet
+2. blockchain: it can be only xrpl at the momonet , more will come soon
+3. wallet: it can be one of the supported wallets: xrpl, gem
+
+

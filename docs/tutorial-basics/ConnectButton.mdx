@@ -1,0 +1,19 @@
+---
+title: ConnectButton
+description: A dynamic button component that handles wallet connection states and provides visual feedback to users.
+---
+
+
+This button will show one of the following states 
+
+| State | Condition | Button Text | Button Style | Button Status | Error Message |
+|-------|-----------|-------------|--------------|---------------|---------------|
+| Initial/Loading | `isWalletInstalled === null` | "Connect to Blockchain" | `button-connect` | Enabled | None |
+| No Wallet | `isWalletInstalled === false` | "Wallet Not Found" | `button-error` | Disabled | "Please install a wallet to connect to the blockchain" |
+| Ready to Connect | `isWalletInstalled === true` && not connected | "Connect to Blockchain" | `button-connect` | Enabled | None |
+| Connecting | `connectionStatus === CONNECTING` | "Connecting..." | `button-connecting` | Disabled | None (unless error occurs) |
+| Connected | `connectionStatus === CONNECTED` | "Disconnect" | `button-disconnected` | Enabled | None |
+| Disconnecting | `connectionStatus === DISCONNECTING` | "Disconnecting..." | `button-disconnecting` | Disabled | None (unless error occurs) |
+| Error - Wallet Check | Wallet check fails | Current state text | Current state style | Based on state | "Error checking wallet status" |
+| Error - Connection | Connection fails | Current state text | Current state style | Based on state | Error from blockchain connection |
+| Error - Disconnection | Disconnection fails | Current state text | Current state style | Based on state | Error from blockchain disconnection |

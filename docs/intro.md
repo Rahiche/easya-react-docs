@@ -2,46 +2,38 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+# Getting Started
 
-## Getting Started
+# @easya/layer-ui-react
+A React component library designed to streamline the development of web3 applications. Currently focused on XRPL integration, with support for additional blockchains coming soon.
 
-Get started by **creating a new site**.
+#  Features
+- Seamless blockchain integration
+- Wallet management
+- Automatic state handling
+- Extensible component system
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+# Installation
 
 ```bash
-npm init docusaurus@latest my-website classic
+npm install @easya/layer-ui-react
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+# Quick Start
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+```typescript
+import { BlockchainProvider, ConnectButton } from '@easya/layer-ui-react';
 
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+function App() {
+  return (
+    <BlockchainProvider config={{
+      network: 'testnet',
+      blockchain: 'xrpl',
+      wallet: 'crossmark'
+    }}>
+      <ConnectButton />
+    </BlockchainProvider>
+  );
+}
 ```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
