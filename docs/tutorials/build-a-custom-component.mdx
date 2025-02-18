@@ -1,0 +1,108 @@
+# Creating Custom UI Components
+
+This guide will walk you through creating custom UI components using the useBlockchain hook and implementing your own connect button similar to the pre-built components like AddressDisplay and BalanceDisplay.
+
+## Setting up the BlockchainProvider
+
+Before creating custom components, you need to wrap your application with the BlockchainProvider:
+
+```tsx
+import { BlockchainProvider } from '../hooks/BlockchainContext';
+import { EasyaConfig } from '@easya/layer-js/dist/core/types';
+
+const config: EasyaConfig = {
+  // Your configuration options
+};
+
+function App() {
+  return (
+    <BlockchainProvider config={config}>
+      {/* Your application components */}
+    </BlockchainProvider>
+  );
+}
+```
+
+## Understanding the useBlockchain Hook
+
+The useBlockchain hook provides access to various blockchain functionalities:
+
+```tsx
+const {
+  connectionStatus,        // Current connection status
+  connectToBlockchain,    // Function to connect
+  disconnectFromBlockchain, // Function to disconnect
+  getAddress,            // Get wallet address
+  getBalance,            // Get wallet balance
+  // ... other functions
+} = useBlockchain();
+```
+
+## Creating a Custom Connect Button
+
+Here's an example of creating a custom connect button component:
+
+```tsx
+import React from 'react';
+import { useBlockchain } from '../hooks/BlockchainContext';
+import { ConnectionStatus } from './types';
+
+interface ConnectButtonProps {
+  className?: string;
+}
+
+export const ConnectButton: React.FC<ConnectButtonProps> = ({ 
+  className = '' 
+}) => {
+  const { 
+    connectionStatus, 
+    connectToBlockchain, 
+    disconnectFromBlockchain 
+  } = useBlockchain();
+
+  const handleConnection = async () => {
+    if (connectionStatus === ConnectionStatus.CONNECTED) {
+      await disconnectFromBlockchain();
+    } else {
+      await connectToBlockchain();
+    }
+  };
+
+  const getButtonText = () => {
+    switch (connectionStatus) {
+      case ConnectionStatus.CONNECTED:
+        return 'Disconnect';
+      case ConnectionStatus.CONNECTING:
+        return 'Connecting...';
+      case ConnectionStatus.DISCONNECTING:
+        return 'Disconnecting...';
+      default:
+        return 'Connect Wallet';
+    }
+  };
+
+  const getButtonClassName = () => {
+    const baseClass = 'easya-connect-button';
+    const statusClass = connectionStatus === ConnectionStatus.CONNECTED
+      ? `${baseClass}--connected`
+      : `${baseClass}--disconnected`;
+    
+    return `${baseClass} ${statusClass} ${className}`.trim();
+  };
+
+  return (
+    <button
+      className={getButtonClassName()}
+      onClick={handleConnection}
+      disabled={
+        connectionStatus === ConnectionStatus.CONNECTING ||
+        connectionStatus === ConnectionStatus.DISCONNECTING
+      }
+    >
+      {getButtonText()}
+    </button>
+  );
+};
+
+export default ConnectButton;
+```

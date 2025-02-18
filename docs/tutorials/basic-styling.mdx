@@ -1,0 +1,161 @@
+# Customizing Styles
+
+This guide explains how to customize the appearance of @easya/layer-ui-react components through both global theme customization and individual component styling.
+
+## Global Theme Customization
+
+### CSS Variables
+
+The @easya/layer-ui-react library uses CSS variables for consistent theming across components. These variables are defined in `packages/easya-react/src/styles/core/_variables.css`.
+
+To customize the theme, create a new CSS file (e.g., `overrides.css`) and override the desired variables:
+
+```css
+:root {
+    /* Main Colors - Light & Web3 Inspired */
+    --easya-primary: #66b2ff;
+    --easya-primary-hover: #5299e6;
+    --easya-primary-active: #3d80cc;
+    --easya-primary-light: #cce0ff;
+    --easya-primary-dark: #0059b3;
+
+    /* Background Colors */
+    --easya-background: #f8f8f8;
+    --easya-background-secondary: #f0f2f5;
+    --easya-background-tertiary: #e0e0e0;
+    --easya-surface: #ffffff;
+    --easya-surface-hover: #f0f0f0;
+
+    /* Text Colors */
+    --easya-text: #333333;
+    --easya-text-secondary: #555555;
+    --easya-text-tertiary: #777777;
+    --easya-text-disabled: #999999;
+    --easya-text-inverse: #ffffff;
+}
+```
+
+### Creating Theme Overrides
+
+1. Create a new CSS file for your overrides
+2. Import it after the main library styles
+3. Override only the variables you want to customize
+
+```javascript
+// In your app's entry point
+import '@easya/layer-ui-react/dist/styles.css';
+import './overrides.css';
+```
+
+## Component-Specific Styling
+
+### AddressDisplay Component
+
+The AddressDisplay component uses several CSS classes that can be customized:
+
+```css
+/* AddressDisplay customization */
+.easya-address-display {
+    /* Container styling */
+}
+
+.easya-address-display__content {
+    /* Content wrapper styling */
+}
+
+.easya-address-display__title {
+    /* Title styling */
+}
+
+.easya-address-display__value {
+    /* Address text styling */
+}
+
+.easya-address-display__value--disconnected {
+    /* Disconnected state styling */
+}
+
+.easya-address-display__value--loading {
+    /* Loading state styling */
+}
+
+.easya-address-display__actions {
+    /* Action buttons container styling */
+}
+
+.easya-address-display__copy,
+.easya-address-display__refresh {
+    /* Button styling */
+}
+```
+
+### ConnectButton Component
+
+The ConnectButton component can be styled using these classes:
+
+```css
+/* ConnectButton customization */
+.connect-button-container {
+    /* Container styling */
+}
+
+.connect-button {
+    /* Base button styling */
+}
+
+.button-connect {
+    /* Connect state styling */
+}
+
+.button-connecting {
+    /* Connecting state styling */
+}
+
+.button-disconnected {
+    /* Disconnected state styling */
+}
+
+.button-error {
+    /* Error state styling */
+}
+```
+
+
+## Example Implementation
+
+Here's a complete example of implementing custom styles:
+
+```javascript
+// App.jsx
+import '@easya/layer-ui-react/dist/styles.css';
+import './overrides.css';
+
+function App() {
+  return (
+    <div>
+      <AddressDisplay className="custom-address-display" />
+      <ConnectButton className="custom-connect-button" />
+    </div>
+  );
+}
+```
+
+```css
+/* overrides.css */
+:root {
+    /* Theme overrides */
+    --easya-primary: #66b2ff;
+    --easya-background: #f8f8f8;
+}
+
+/* Component-specific overrides */
+.custom-address-display .easya-address-display__value {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.custom-connect-button.button-connect {
+    background-color: var(--easya-primary);
+    border-radius: 10px;
+}
+```

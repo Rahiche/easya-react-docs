@@ -4,67 +4,30 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Seamless Blockchain Integration',
+    title: 'Blockchain Integration',
     emoji: '🔗',
     description: (
       <>
-        Quick and easy integration with XRPL blockchain through our
-        BlockchainProvider. Connect wallets and manage transactions with just
-        a few lines of code.
+        Connect to XRPL blockchain and manage transactions using BlockchainProvider.
       </>
     ),
   },
   {
-    title: 'Complete Token Management',
-    emoji: '💰',
-    description: (
-      <>
-        Comprehensive suite of components for token operations including
-        <code>BalanceDisplay</code>, <code>TransactionForm</code>, and
-        <code>TrustLineForm</code> for complete token lifecycle management.
-      </>
-    ),
-  },
-  {
-    title: 'Modern React Components',
+    title: 'React Components',
     emoji: '⚛️',
     description: (
       <>
-        Built with modern React practices, featuring dark/light mode support
-        and responsive design. Fully customizable components that work seamlessly
-        with your existing React application.
+        Ready to use React components, just plug and play.
       </>
     ),
   },
+
   {
-    title: 'Developer-First Experience',
-    emoji: '👩‍💻',
-    description: (
-      <>
-        Designed with developers in mind - TypeScript support, comprehensive
-        documentation, and intuitive APIs make blockchain development
-        straightforward and efficient.
-      </>
-    ),
-  },
-  {
-    title: 'Secure by Design',
-    emoji: '🔒',
-    description: (
-      <>
-        Built-in security best practices for wallet integration and transaction
-        handling. Safely manage digital assets with components that prioritize
-        security.
-      </>
-    ),
-  },
-  {
-    title: 'Extensive Customization',
+    title: 'Customization',
     emoji: '🎨',
     description: (
       <>
-        Flexible theming system allows you to match your brand's look and feel.
-        Customize components with your own styles while maintaining functionality.
+        Flexible theming system to match your styles while preserving functionality.
       </>
     ),
   },
