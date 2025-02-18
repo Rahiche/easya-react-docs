@@ -1,0 +1,79 @@
+# BalancesDisplay
+
+A React component that displays blockchain balances with auto-refresh capabilities and different connection states.
+
+## Features
+
+- Displays a list of blockchain balances with currency and value
+- Shows special handling for non-standard currencies
+- Auto-refreshes balances at configurable intervals
+- Manual refresh button
+- Responsive to different connection states
+- Displays issuer information when available
+
+## Props
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | '' | Additional CSS classes to apply to the component |
+| refreshInterval | number \| null | null | Interval in milliseconds for auto-refresh. Set to null to disable auto-refresh |
+
+## States
+
+The component manages several internal states:
+
+- **balances**: Array of Balance objects containing currency and value information
+- **isLoading**: Boolean indicating if balances are being fetched
+- **error**: String containing error message if fetch fails
+- **connectionStatus**: Current blockchain connection state
+
+## Connection States
+
+The component displays different content based on these connection states:
+
+- **Disconnected**: Shows "Not connected"
+- **Connecting**: Shows "Connecting..."
+- **Connected**: Displays the list of balances
+- **Loading**: Shows "Loading..." while fetching balances
+- **Error**: Displays error message if balance fetch fails
+
+## Balance Display
+
+Each balance entry shows:
+- Currency name (standard or non-standard)
+- Issuer information (if available)
+- Hex code (for non-standard currencies)
+- Balance value
+
+## Usage
+
+```tsx
+import { BalancesDisplay } from './BalancesDisplay';
+
+// Basic usage with no auto-refresh
+<BalancesDisplay />
+
+// With auto-refresh every 30 seconds
+<BalancesDisplay refreshInterval={30000} />
+
+// With custom CSS class
+<BalancesDisplay className="custom-balances" refreshInterval={15000} />
+```
+
+## CSS Classes
+
+The component uses these CSS classes for styling:
+
+- `easya-balances-display`: Main container
+- `easya-balances-display__content`: Content wrapper
+- `easya-balances-display__header`: Header section
+- `easya-balances-display__title`: Title text
+- `easya-balances-display__refresh`: Refresh button
+- `easya-balances-display__list`: Balances list container
+- `easya-balances-display__item`: Individual balance item
+- `easya-balances-display__currency`: Currency display
+- `easya-balances-display__issuer`: Issuer information
+- `easya-balances-display__value`: Balance value
+- `easya-balances-display__empty`: Empty state message
+- `easya-balances-display__error`: Error message
+- `easya-balances-display__status`: Status messages
