@@ -1,0 +1,32 @@
+# TransactionForm
+
+A React component for handling blockchain transactions with support for multiple currencies and real-time balance checking.
+
+## Features
+
+- Asset selection from available balances
+- Real-time balance display
+- Amount input with balance validation
+- Recipient address input
+- Transaction status and error handling
+- Automatic asset list refresh when connection status changes
+
+## States
+
+The component manages several internal states:
+
+- **Disconnected**: Form inputs are disabled
+- **Connected**: Form is active and ready for transaction
+- **Error**: Shows validation errors (e.g., insufficient balance)
+- **Transaction Status**: Displays current transaction status
+- **Asset Selection**: Shows available assets and their balances
+
+## Usage
+
+```tsx
+import { TransactionForm } from './TransactionForm';
+
+// Basic usage within your app
+<TransactionForm />
+```
+
